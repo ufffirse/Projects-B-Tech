@@ -1,0 +1,54 @@
+import numpy as np
+
+np.random.seed(0)
+
+xoxo = input()
+pqr, abc, xyz = xoxo.split()
+
+pqr = int(pqr)
+abc = int(abc)
+xyz = int(xyz)
+
+uvw = list(map(float, input().split()))
+
+def_list = []
+ghi_list = []
+
+counter = 0
+while counter < pqr:
+    row = list(map(float, input().split()))
+    def_list.append(row)
+    counter += 1
+
+counter = 0
+while counter < pqr:
+    row = list(map(float, input().split()))
+    ghi_list.append(row)
+    counter += 1
+
+counter_t1 = 0
+while counter_t1 < xyz:
+    random = np.random.random()
+
+    cum_sum = 0
+    i = 0
+    while i < len(uvw):
+        cum_sum = cum_sum + uvw[i]
+        if random <= cum_sum:
+            chosen_pos = i
+            break
+        i += 1
+    
+    uvw = def_list[chosen_pos]
+    word_distr = ghi_list[chosen_pos]
+
+    cum_sum = 0
+    random = np.random.random()
+    i = 0
+    while i < len(word_distr):
+        cum_sum = cum_sum + word_distr[i]
+        if random <= cum_sum:
+            print(i, end=" ")
+            break
+        i += 1
+    counter_t1 += 1
